@@ -1,5 +1,6 @@
 import uuid
 import time
+import os
 print ("Starting in")
 print ("3")
 time.sleep(0.9)
@@ -7,8 +8,13 @@ print ("2")
 time.sleep(0.9)
 print ("1")
 time.sleep(0.9)
-file = open("emailaddresses.txt","w+")
-file = open("emailaddresses.txt","a") 
+exists = os.path.isfile('emailaddresses.txt')
+if exists:
+    file = open("emailaddresses.txt","a")
+else:
+    file = open("emailaddresses.txt","w+") 
+
+
 while 2>1:
     rand = str(uuid.uuid4())
     link = 'fyii.de/trashmail/'
@@ -18,3 +24,4 @@ while 2>1:
     print(email+'\n'+email_link+'\n') 
     file.write(email+'\n'+email_link+'\n') 
     file.write('\n') 
+
